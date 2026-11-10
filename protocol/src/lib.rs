@@ -9,14 +9,14 @@ pub enum Packet {
     ServerSnap(ServerSnapshot),
 }
 
-#[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Deserialize, Serialize)]
 pub struct InputFrame {
     pub seq: u32,
     pub move_dir: Vec2,
     pub shoot: bool,
 }
 
-#[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Deserialize, Serialize)]
 pub struct TankSnapshot {
     pub id: u32,
     pub position: Vec2,
