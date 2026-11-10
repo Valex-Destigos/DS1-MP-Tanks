@@ -11,22 +11,22 @@ pub enum Packet {
 
 #[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
 pub struct InputFrame {
-    seq: u32,
-    move_dir: Vec2,
-    shoot: bool,
+    pub seq: u32,
+    pub move_dir: Vec2,
+    pub shoot: bool,
 }
 
 #[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
 pub struct TankSnapshot {
-    id: u32,
-    position: Vec2,
-    rotation: f32,
+    pub id: u32,
+    pub position: Vec2,
+    pub rotation: f32,
 }
 
 #[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
 pub struct ServerSnapshot {
-    tick: u64,
-    tanks: Vec<TankSnapshot>,
+    pub tick: u64,
+    pub tanks: Vec<TankSnapshot>,
 }
 
 pub fn serialize_packet(packet: &Packet) -> Result<Vec<u8>, Error> {
@@ -46,25 +46,19 @@ mod tests {
 
         let frame = InputFrame {
             seq: 1,
-            move_dir: Vec2 { x: 1.0, y: 3.0 },
+            move_dir: Vec2::new(1.0, 3.0),
             shoot: false,
         };
 
         let tank1_snap = TankSnapshot {
             id: 420,
-            position: Vec2 {
-                x: 345.67,
-                y: 111.222,
-            },
+            position: Vec2::new(345.67, 111.222),
             rotation: 0.69,
         };
 
         let tank2_snap = TankSnapshot {
             id: 69,
-            position: Vec2 {
-                x: 2340.344,
-                y: 12.432,
-            },
+            position: Vec2::new(2340.344, 12.432),
             rotation: 0.333,
         };
 
